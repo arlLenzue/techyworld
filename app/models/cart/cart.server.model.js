@@ -6,7 +6,7 @@ var CartSchema = new mongoose.Schema({
     total: {type: Number, default: 0},
     items: [CartItemSchema],
     itemsCount: {type: Number, default: 0}
-});
+},{ usePushEach: true });
 
 CartSchema.methods.addItem = function(item, cb){
     var that = this;

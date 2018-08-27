@@ -1,6 +1,5 @@
 'use strict';
 var mongoose = require('mongoose');
-mongoose.plugin(schema => { schema.options.usePushEach = true });
 var fs = require('fs');
 var Item = mongoose.model('Items');
 

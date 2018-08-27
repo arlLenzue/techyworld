@@ -6,7 +6,7 @@ var CategoriesSchema = new mongoose.Schema({
         unique: true,
         default: 'uncategorized'
     }
-});
+}, { usePushEach: true });
 
 mongoose.model('Categories', CategoriesSchema);
 

@@ -8,6 +8,6 @@ var ItemsSchema = new mongoose.Schema({
     images: Array,
     mainImageIndex: {type: Number, default: 0},
     qty: {type: Number, default: 1}
-});
+}, { usePushEach: true });
 
 mongoose.model('Items', ItemsSchema);

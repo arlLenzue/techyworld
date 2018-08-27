@@ -11,6 +11,6 @@ var OrderSchema = new mongoose.Schema({
     }],
     date: { type: Date, default: Date.now }
 
-});
+}, { usePushEach: true });
 
 mongoose.model('Order', OrderSchema);
