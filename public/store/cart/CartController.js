@@ -19,6 +19,7 @@
 
         function addToCart(item){
             item.noToast = true;
+            item.qty = 1; // add only 1
             CartService.addToCart(item, function(cart){
                 vm.cart = cart;
             })
