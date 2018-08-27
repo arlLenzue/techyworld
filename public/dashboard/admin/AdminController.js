@@ -9,6 +9,20 @@
 
         var vm = this;
 
+        vm.itemTemplate = {
+            title: "",
+            description: "",
+            category: "uncategorized",
+            price: 0,
+            images: [],
+            mainImageIndex: 0,
+            qty: 1
+        }
+
+        vm.categoryTemplate = {
+            name: ""
+        },
+
         vm.itemImage = null;
 
         angular.extend(vm, {
@@ -30,14 +44,14 @@
 
         function AddCategory(){
         	CategoriesService.addNew(vm.category, function(category){
-        		console.log(category, ' category successfully added');
+        		vm.category = angular.copy(vm.categoryTemplate);
         	});
         }
 
         function AddItem(){
             vm.items.images = [vm.itemImage || "http://alameddinefurniture.com/images/noimage.png"]
         	ItemsService.addItem(vm.items, function(item){
-        		console.log(item, ' item successfully added');
+                vm.items = angular.copy(vm.itemTemplate);
         	});
         }
 
