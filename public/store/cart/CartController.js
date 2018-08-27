@@ -11,15 +11,31 @@
 
         angular.extend(vm, {
             deleteFromCart: deleteFromCart,
+            deleteFromCartAll: deleteFromCartAll,
             deleteAll: clearCart,
-            updateCart: updateCart
+            updateCart: updateCart,
+            addToCart: addToCart
         });
+
+        function addToCart(item){
+            item.noToast = true;
+            CartService.addToCart(item, function(cart){
+                vm.cart = cart;
+            })
+        }
 
         function deleteFromCart(item) {
             CartService.deleteFromCart(item, function(cart){
                 vm.cart = cart;
             });
         }
+
+        function deleteFromCartAll(item) {
+            CartService.deleteFromCartAll(item, function(cart){
+                vm.cart = cart;
+            });
+        }
+        
 
         function clearCart(){
             CartService.clearCart(function(cart){

@@ -43,11 +43,15 @@
                         </div>
                         <div class="col-xs-3" ng-bind="item.title"></div>
                         <div class="col-xs-2" ng-bind="item.price | currency"></div>
-                        <div class="col-xs-2" ng-bind="item.qty"></div>
+                        <div class="col-xs-2">
+                            <i ng-click="cartCtrl.addToCart(item)" class="btn fa fa-plus-square"></i>
+                            <span ng-bind="item.qty"></span>
+                            <i ng-click="cartCtrl.deleteFromCart(item)" class="btn fa fa-minus-square"></i>
+                        </div>
                         <div class="col-xs-2" ng-bind="item.price * item.qty | currency"></div>
                         <div class="col-xs-1 text-center">
                             <button class="btn btn-default"
-                                    ng-click="cartCtrl.deleteFromCart(item)">
+                                    ng-click="cartCtrl.deleteFromCartAll(item)">
                                 <i class="fa fa-close"></i>
                             </button>
                         </div>

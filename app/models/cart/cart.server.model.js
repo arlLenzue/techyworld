@@ -88,4 +88,27 @@ CartSchema.methods.removeItem = function(id, cb){
     this.save(cb);
 };
 
+CartSchema.methods.removeItemAll = function(id, cb){
+    /*
+    * Remove item from cart only if items count is greater than 0
+    * */
+    if(this.items.length > 0){
+
+        for (var index = 0; index <= this.items.length; index++ ){
+
+            var item = this.items[index];
+
+                if(item._id === id){
+                    this.itemsCount -= item.qty;
+                    this.total -= (item.price * item.qty);
+                    this.items.splice(index, 1);
+                    
+                    this.save(cb);
+                    
+                }
+        }
+    }
+
+};
+
 mongoose.model('Cart', CartSchema);

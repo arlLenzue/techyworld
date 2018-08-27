@@ -96,6 +96,34 @@ exports.deleteOne = function(req, res, next) {
 	
 };
 
+exports.deleteOneAll = function(req, res, next) { 
+    //Retrieving item id and qty for secure reasons
+    var itemID = req.params.id;
+    var cartID = req.user ? req.user.id : req.sessionID;
+    //Search for item in store items by ID
+    checkForExistingCart(cartID, function (response) {
+
+        var cart;
+
+        if(response){
+            console.log("\nCart found. Start working with existing cart. \n");
+
+            //Using existing cart
+            cart = response;
+        } else {
+            console.log("\nCart not found. Nothing to delete \n");
+            return;
+        }
+
+        cart.removeItemAll(itemID, function(err, cart){
+            if (err) {
+                return next(err)
+            }
+            res.json(cart);
+        });
+    });
+};
+
 exports.get = function(req, res, next) { 
 
    var cartID = req.user ? req.user.id : req.sessionID;

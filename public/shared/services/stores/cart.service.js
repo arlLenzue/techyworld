@@ -11,6 +11,7 @@
         var service = {
             addToCart: addToCart,
             deleteFromCart: deleteFromCart,
+            deleteFromCartAll: deleteFromCartAll,
             clearCart: clearCart,
             getCart: getCart,
             updateCart: updateCart,
@@ -23,9 +24,12 @@
            $http.post('/add-to-cart', obj).then(function(response){
                callback(response.data);
                angular.copy(response.data, cart);
-               var toastMessage = cart.items[cart.items.length-1].title + ' was added to your cart';
-                toastr.success( toastMessage , 'Shopping Cart');
 
+               if(!obj.noToast){
+                  var toastMessage = cart.items[cart.items.length-1].title + ' was added to your cart';
+                  toastr.success( toastMessage , 'Shopping Cart');
+               }
+               
             }, function(err){
                 return err;
             });
@@ -33,7 +37,6 @@
 
         function clearCart(callback){
            $http.delete('/delete-all-from-cart').then(function(response){
-              console.log(response.data,'response.data');
                callback(response.data);
                angular.copy(response.data, cart);
             });
@@ -41,6 +44,13 @@
 
         function deleteFromCart(obj, callback){
            $http.delete('/delete-from-cart/'+ obj._id).then(function(response){
+               callback(response.data);
+               angular.copy(response.data, cart);
+            });
+        }
+
+        function deleteFromCartAll(obj, callback){
+           $http.delete('/delete-from-cart-all/'+ obj._id).then(function(response){
                callback(response.data);
                angular.copy(response.data, cart);
             });
