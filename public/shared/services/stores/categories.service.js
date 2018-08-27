@@ -24,6 +24,7 @@
         function addNew(category, callback){
             $http.post('/add-categories', category).then(function(response){
                callback(response.data);
+               toastr.success("New category has been added successfully");
             });
         }
 
