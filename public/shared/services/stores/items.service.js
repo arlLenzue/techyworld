@@ -38,8 +38,8 @@
 
         function addItem(item, callback){
             $http.post('/add-items', item).then(function(response){
-               callback(response.data);
                toastr.success("New item has been added successfully");
+               callback(response.data);
             });
         }
 
