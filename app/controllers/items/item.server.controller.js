@@ -12,6 +12,22 @@ exports.get = function(req, res, next) {
 		} 
 	}); 
 }
+
+
+exports.getByCategory = function(req, res, next) {
+
+	var categoryName = req.params.category; 
+	
+    Item.find({category: categoryName}, function(err, category) { 
+		if (err) { 
+			return next(err); 
+		} else { 
+			res.json(category); 
+		} 
+	}); 
+
+}
+
 exports.add = function(req, res, next) { 
 
 	var item = new Item(req.body); 

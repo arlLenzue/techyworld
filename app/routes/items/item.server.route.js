@@ -5,6 +5,9 @@ module.exports = function(app) {
 	app.route('/get-items')
 	.get(item.get)
 
+	app.route('/get-items/:category')
+	.get(item.getByCategory)
+
 	app.route('/getOne-items/:id')
 	.get(item.getOne)
 

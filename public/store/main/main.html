@@ -16,11 +16,11 @@
             <div class="collapse navbar-collapse d-inline-block" id="bs-example-navbar-collapse-8">
                 <ul class="nav navbar-nav d-inline-block">
                 	<li class="navbar-main__item">
-                        <a class="navbar-brand" ui-sref="store"><i class="fa fa-list"></i></a>
+                        <a class="navbar-brand" ui-sref="store" ng-click="mainCtrl.getItems()"><i class="fa fa-home"></i></a>
                     </li>
                     <li class="navbar-main__item"
                         ng-repeat="category in storeCtrl.categories track by $index">
-                        <a href="{{ '#/category/' + category.name }}">{{category.name}}</a>
+                        <a href="" ng-click="mainCtrl.changeCategory(category.name)">{{category.name}}</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -32,16 +32,34 @@
         <div class="form-group">
                 <h2>Latest Goods</h2>
                 <!-- Split button -->
-                <div class="dropdown items-filter">
-                    <span>Sort by: </span>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span ng-show="">Price Down <i class="glyphicon glyphicon-arrow-down"></i></span>
-                        <span ng-show="">Price Up <i class="glyphicon glyphicon-arrow-up"></i></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li ng-click=""><a href="#">Price Down</a></li>
-                        <li ng-click=""><a href="#">Price Up</a></li>
-                    </ul>
+                <label>Sort by: </label>
+                <div class="btn-group dropup">
+                    <div class="dropdown items-filter">
+                        <div class="btn-group dropup">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span>{{mainCtrl.filter.name}}</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li ng-click="mainCtrl.filter.name = 'price'"><a href="#">Price</a></li>
+                            <li ng-click="mainCtrl.filter.name = 'title'"><a href="#">Name</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="btn-group dropup">
+                    <div class="dropdown items-filter">
+                        <div class="btn-group dropup">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span ng-show="!mainCtrl.filter.value"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                            <span ng-show="mainCtrl.filter.value"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li ng-click="mainCtrl.sort(false)"><a href="#">Down</a></li>
+                            <li ng-click="mainCtrl.sort(true)"><a href="#">Up</a></li>
+                        </ul>
+                        </div>
+                    </div>
                 </div>
         </div>
     </div>
@@ -51,7 +69,7 @@
     <div class="row text-center">
 
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 hero-feature"
-             ng-repeat="item in mainCtrl.items">
+             ng-repeat="item in mainCtrl.items | orderBy: mainCtrl.filter.name: mainCtrl.filter.value">
             <div class="thumbnail item-thumbnail">
                 <a href="{{ '#/items/' + item._id }}">
                     <span class="item-hover-mask item-hover-mask_more">

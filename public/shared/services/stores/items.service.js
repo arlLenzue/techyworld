@@ -12,13 +12,20 @@
             getItem: getItem,
             addItem: addItem,
             updateItem: updateItem,
-            deleteItem: deleteItem
+            deleteItem: deleteItem,
+            getAllCategory: getAllCategory
         };
 
         return service;
 
         function getAll(callback){
          $http.get('/get-items').then(function(response){
+               callback(response.data);
+            });
+        }
+
+        function getAllCategory(category, callback){
+            $http.get('/get-items/'+ category).then(function(response){
                callback(response.data);
             });
         }
