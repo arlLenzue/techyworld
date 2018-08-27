@@ -1,4 +1,5 @@
 'use strict';
+mongoose.plugin(schema => { schema.options.usePushEach = true });
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Cart = mongoose.model('Cart');

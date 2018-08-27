@@ -1,5 +1,6 @@
 'use strict';
 var mongoose = require('mongoose');
+mongoose.plugin(schema => { schema.options.usePushEach = true });
 var Order = mongoose.model('Order');
 
 exports.checkout = function(req, res, next) { 

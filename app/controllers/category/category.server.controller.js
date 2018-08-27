@@ -1,5 +1,6 @@
 'use strict';
 var mongoose = require('mongoose');
+mongoose.plugin(schema => { schema.options.usePushEach = true });
 var Category = mongoose.model('Categories');
 
 exports.get = function(req, res, next) { 
