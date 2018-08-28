@@ -20,8 +20,9 @@
 
         function addToCart(item){
             item.noToast = true;
-            item.newValue = newValue; // add only 1
-            CartService.addToCart(item, function(cart){
+            var itemCopy = angular.copy(item);
+            itemCopy.qty = newValue;
+            CartService.addToCart(itemCopy, function(cart){
                 vm.cart = cart;
             })
         }
