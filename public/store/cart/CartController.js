@@ -8,6 +8,7 @@
     function CartController(CartService){
 
         var vm = this;
+        var newValue = 1;
 
         angular.extend(vm, {
             deleteFromCart: deleteFromCart,
@@ -19,7 +20,7 @@
 
         function addToCart(item){
             item.noToast = true;
-            item.qty = 1; // add only 1
+            item.newValue = newValue; // add only 1
             CartService.addToCart(item, function(cart){
                 vm.cart = cart;
             })
