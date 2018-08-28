@@ -21,9 +21,6 @@
         return service;
 
         function addToCart(obj, callback){
-            if(obj.newValue) {
-                obj.qty = obj.newValue;
-            }
            $http.post('/add-to-cart', obj).then(function(response){
                callback(response.data);
                angular.copy(response.data, cart);
