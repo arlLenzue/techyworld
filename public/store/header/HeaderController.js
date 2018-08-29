@@ -19,7 +19,8 @@
         }
 
         function transitionToDashboard(user){
-            if(user) $state.go("admin");
+            if(user && user.role == "Admin") $state.go("admin");
+            else toastr.success("Under Construction");
         }
 
         function getCurrentCart(){
@@ -27,6 +28,11 @@
                 vm.cart = cart;
             })
         }
+
+
+        $(".btn-romove-top-noti").click(function(){
+            $(".top-notif").remove();
+        });
 
         getCurrentCart();
 

@@ -10,8 +10,6 @@
         var vm = this;
 
          angular.extend(vm, {
-            AddCart: null,
-            Checkout: null,
             filter: {
                 name: 'price',
                 value: true
@@ -19,7 +17,6 @@
             sort: sort,
             changeCategory: changeCategory,
             getItems: getItems
-
         });
 
          function sort(value){

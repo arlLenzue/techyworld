@@ -33,7 +33,7 @@
                         templateUrl: 'store/main/main.html',
                         controller: 'MainController',
                         controllerAs: 'mainCtrl'
-                    }
+                    },
                 }
             })
             .state('store.item', {
@@ -43,6 +43,16 @@
                         templateUrl: 'store/single-item/single-item.html',
                         controller: 'SingleItemController',
                         controllerAs: 'singleItemCtrl'
+                    }
+                }
+            })
+            .state('store.products', {
+                url: 'products/',
+                views: {
+                    'content@store': {
+                        templateUrl: 'store/products/products.html',
+                        controller: 'ProductsController',
+                        controllerAs: 'productsCtrl'
                     }
                 }
             })

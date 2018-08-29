@@ -24,12 +24,6 @@
            $http.post('/add-to-cart', obj).then(function(response){
                callback(response.data);
                angular.copy(response.data, cart);
-
-               if(!obj.noToast){
-                  var toastMessage = cart.items[cart.items.length-1].title + ' was added to your cart';
-                  toastr.success( toastMessage , 'Shopping Cart');
-               }
-               
             }, function(err){
                 return err;
             });

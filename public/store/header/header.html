@@ -1,32 +1,431 @@
-<nav>
-    <div class="container">
+<!-- header fixed -->
+<div class="wrap_header fixed-header2 trans-0-4">
+	<!-- Logo -->
+	<a href="#" class="logo">
+		<img src="images/icons/logo.png" alt="IMG-LOGO">
+	</a>
 
-        <a class="navbar-brand navbar-logo" ui-sref="store">
-        	<i class="glyphicon glyphicon-shopping-cart"></i>
-        	TechyWorld
-        </a>
+	<!-- Menu -->
+	<div class="wrap_menu">
+		<nav class="menu">
+			<ul class="main_menu">
 
-       <div class="header-cart navbar-nav">
-	        <btn class="btn btn-default" ui-sref="store.cart">
-	            <span class="header-cart__title">Shopping cart</span>
-	            <span class="label label-info" ng-if="!headerCtrl.cart.items.length">is empty </span>
-	            <span ng-if="headerCtrl.cart.items.length">
-	                <span class="label label-info"> {{ headerCtrl.cart.itemsCount }} items</span>
-	                <span class="label label-success"> {{ headerCtrl.cart.total | currency}}</span>
-	            </span>
-	        </btn>
-	    </div>
+				<li>
+					<a ui-sref="store"> <i class="fa fa-home"></i> Home</a>
+				</li>
 
-	    <div class="navbar-brand">
-	    	<button class="btn-primary" ng-hide="appCtrl.user.id" ng-click="headerCtrl.redirectBtn('signin')">signin</button>
+				<li>
+					<a ui-sref="store.products">Products</a>
+				</li>
 
-	       <button class="btn-primary" ng-hide="appCtrl.user.id" ng-click="headerCtrl.redirectBtn('signup')">signup</button>
+				<li>
+					<a href="#">About</a>
+				</li>
 
-	       <button class="btn-info" ng-show="appCtrl.user.id" ng-click="headerCtrl.transitionToDashboard(appCtrl.user.role)" class="bordered-right">
-	       		<span ng-bind="appCtrl.user.username"></span>
-	       </button>
+				<li>
+					<a href="#">Contact</a>
+				</li>
 
-	       <button class="btn-warning" ng-show="appCtrl.user.id" ng-click="headerCtrl.redirectBtn('signout')">signout</button>
+			</ul>
+		</nav>
+	</div>
+
+	<!-- Header Icon -->
+	<div class="header-icons">
+		<a href="" class="header-wrapicon1 dis-block">
+			<img ng-if="appCtrl.user.id" ng-click="headerCtrl.transitionToDashboard(appCtrl.user.role)" src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+			<span ng-if="!appCtrl.user.id" ng-click="headerCtrl.redirectBtn('signin')">Sign In</span>
+		</a>
+
+		<span class="linedivide1"></span>
+
+		<div ui-sref="store.cart" class="header-wrapicon2">
+			<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+			<span class="header-icons-noti">
+				<span ng-bind="headerCtrl.cart.itemsCount || 0"></span>
+			</span>
+
+			<!-- Header cart noti -->
+			<!-- <div class="header-cart header-dropdown">
+				<ul class="header-cart-wrapitem">
+					<li class="header-cart-item">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-01.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt">
+							<a href="#" class="header-cart-item-name">
+								White Shirt With Pleat Detail Back
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $19.00
+							</span>
+						</div>
+					</li>
+
+					<li class="header-cart-item">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-02.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt">
+							<a href="#" class="header-cart-item-name">
+								Converse All Star Hi Black Canvas
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $39.00
+							</span>
+						</div>
+					</li>
+
+					<li class="header-cart-item">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-03.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt">
+							<a href="#" class="header-cart-item-name">
+								Nixon Porter Leather Watch In Tan
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $17.00
+							</span>
+						</div>
+					</li>
+				</ul>
+
+				<div class="header-cart-total">
+					Total: $75.00
+				</div>
+
+				<div class="header-cart-buttons">
+					<div class="header-cart-wrapbtn">
+						<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+							View Cart
+						</a>
+					</div>
+
+					<div class="header-cart-wrapbtn">
+						<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+							Check Out
+						</a>
+					</div>
+				</div>
+			</div> -->
+			
 		</div>
-    </div>
-</nav>
+	</div>
+</div>
+
+<!-- top noti -->
+<div class="flex-c-m size22 bg0 s-text21 top-notif pos-relative">
+	20% off everything!
+	<a href="#" class="s-text22 hov6 p-l-5">
+		Shop Now
+	</a>
+
+	<button class="flex-c-m pos2 size23 colorwhite eff3 trans-0-4 btn-romove-top-noti">
+		<i class="fa fa-remove fs-13" aria-hidden="true"></i>
+	</button>
+</div>
+<!-- Header -->
+<header class="header2">
+	<!-- Header desktop -->
+	<div class="container-menu-header-v2 p-t-26">
+		<div class="topbar2">
+			<div class="topbar-social">
+				<a href="#" class="topbar-social-item fa fa-facebook"></a>
+				<a href="#" class="topbar-social-item fa fa-instagram"></a>
+				<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+				<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+				<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+			</div>
+
+			<!-- Logo2 -->
+			<a href="#" class="logo2">
+				<img src="images/icons/logo.png" alt="IMG-LOGO">
+			</a>
+
+			<div class="topbar-child2">
+				<span class="topbar-email">
+					<span ng-bind="appCtrl.user.email"></span>
+				</span>
+
+				<!--  -->
+				<a href="" class="header-wrapicon1 dis-block m-l-30">
+					<img ng-if="appCtrl.user.id" ng-click="headerCtrl.transitionToDashboard(appCtrl.user.role)" src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+					<span ng-if="!appCtrl.user.id" ng-click="headerCtrl.redirectBtn('signin')">Sign In</span>
+				</a>
+
+				<span class="linedivide1"></span>
+
+				<div ui-sref="store.cart" class="header-wrapicon2 m-r-13">
+					<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+					<span class="header-icons-noti">
+						<span ng-bind="headerCtrl.cart.itemsCount || 0"></span>
+					</span>
+
+					<!-- Header cart noti -->
+					<div class="header-cart header-dropdown">
+						<ul class="header-cart-wrapitem">
+							<li class="header-cart-item">
+								<div class="header-cart-item-img">
+									<img src="images/item-cart-01.jpg" alt="IMG">
+								</div>
+
+								<div class="header-cart-item-txt">
+									<a href="#" class="header-cart-item-name">
+										White Shirt With Pleat Detail Back
+									</a>
+
+									<span class="header-cart-item-info">
+										1 x $19.00
+									</span>
+								</div>
+							</li>
+
+							<li class="header-cart-item">
+								<div class="header-cart-item-img">
+									<img src="images/item-cart-02.jpg" alt="IMG">
+								</div>
+
+								<div class="header-cart-item-txt">
+									<a href="#" class="header-cart-item-name">
+										Converse All Star Hi Black Canvas
+									</a>
+
+									<span class="header-cart-item-info">
+										1 x $39.00
+									</span>
+								</div>
+							</li>
+
+							<li class="header-cart-item">
+								<div class="header-cart-item-img">
+									<img src="images/item-cart-03.jpg" alt="IMG">
+								</div>
+
+								<div class="header-cart-item-txt">
+									<a href="#" class="header-cart-item-name">
+										Nixon Porter Leather Watch In Tan
+									</a>
+
+									<span class="header-cart-item-info">
+										1 x $17.00
+									</span>
+								</div>
+							</li>
+						</ul>
+
+						<div class="header-cart-total">
+							Total: $75.00
+						</div>
+
+						<div class="header-cart-buttons">
+							<div class="header-cart-wrapbtn">
+								<!-- Button -->
+								<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									View Cart
+								</a>
+							</div>
+
+							<div class="header-cart-wrapbtn">
+								<!-- Button -->
+								<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									Check Out
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="wrap_header">
+
+			<!-- Menu -->
+			<div class="wrap_menu">
+				<nav class="menu">
+					<ul class="main_menu">
+						<li>
+							<a ui-sref="store"><i class="fa fa-home"></i> Home</a>
+						</li>
+
+						<li>
+							<a  ui-sref="store.products">Products</a>
+						</li>
+
+						<li>
+							<a href="#">About</a>
+						</li>
+
+						<li>
+							<a href="#">Contact</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- Header Icon -->
+			<div class="header-icons">
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Header Mobile -->
+	<div class="wrap_header_mobile">
+		<!-- Logo moblie -->
+		<a href="#" class="logo-mobile">
+			<img src="images/icons/logo.png" alt="IMG-LOGO">
+		</a>
+
+		<!-- Button show menu -->
+		<div class="btn-show-menu">
+			<!-- Header Icon mobile -->
+			<div class="header-icons-mobile">
+				<a href="" ng-if="appCtrl.user.id" ng-click="headerCtrl.transitionToDashboard(appCtrl.user.role)" class="header-wrapicon1 dis-block">
+					<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+					<span ng-if="!appCtrl.user.id" ng-click="headerCtrl.redirectBtn('signin')">Sign In</span>
+				</a>
+
+				<span class="linedivide2"></span>
+
+				<div class="header-wrapicon2">
+					<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+					<span class="header-icons-noti">
+						<span ng-bind="headerCtrl.cart.itemsCount || 0"></span>
+					</span>
+
+					<!-- Header cart noti -->
+					<div class="header-cart header-dropdown">
+						<ul class="header-cart-wrapitem">
+							<li class="header-cart-item">
+								<div class="header-cart-item-img">
+									<img src="images/item-cart-01.jpg" alt="IMG">
+								</div>
+
+								<div class="header-cart-item-txt">
+									<a href="#" class="header-cart-item-name">
+										White Shirt With Pleat Detail Back
+									</a>
+
+									<span class="header-cart-item-info">
+										1 x $19.00
+									</span>
+								</div>
+							</li>
+
+							<li class="header-cart-item">
+								<div class="header-cart-item-img">
+									<img src="images/item-cart-02.jpg" alt="IMG">
+								</div>
+
+								<div class="header-cart-item-txt">
+									<a href="#" class="header-cart-item-name">
+										Converse All Star Hi Black Canvas
+									</a>
+
+									<span class="header-cart-item-info">
+										1 x $39.00
+									</span>
+								</div>
+							</li>
+
+							<li class="header-cart-item">
+								<div class="header-cart-item-img">
+									<img src="images/item-cart-03.jpg" alt="IMG">
+								</div>
+
+								<div class="header-cart-item-txt">
+									<a href="#" class="header-cart-item-name">
+										Nixon Porter Leather Watch In Tan
+									</a>
+
+									<span class="header-cart-item-info">
+										1 x $17.00
+									</span>
+								</div>
+							</li>
+						</ul>
+
+						<div class="header-cart-total">
+							Total: $75.00
+						</div>
+
+						<div class="header-cart-buttons">
+							<div class="header-cart-wrapbtn">
+								<!-- Button -->
+								<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									View Cart
+								</a>
+							</div>
+
+							<div class="header-cart-wrapbtn">
+								<!-- Button -->
+								<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									Check Out
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- Menu Mobile -->
+	<div class="wrap-side-menu" >
+		<nav class="side-menu">
+			<ul class="main-menu">
+				<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+					<span class="topbar-child1">
+						Free shipping for standard order over $100
+					</span>
+				</li>
+
+				<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+					<div class="topbar-child2-mobile">
+						<span class="topbar-email">
+							<span ng-bind="appCtrl.user.email"></span>
+						</span>
+					</div>
+				</li>
+
+				<li class="item-topbar-mobile p-l-10">
+					<div class="topbar-social-mobile">
+						<a href="#" class="topbar-social-item fa fa-facebook"></a>
+						<a href="#" class="topbar-social-item fa fa-instagram"></a>
+						<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+						<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+						<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+					</div>
+				</li>
+
+				<li class="item-menu-mobile">
+					<a ui-sref="store"> <i class="fa fa-home"></i> Home</a>
+				</li>
+						
+				<li class="item-menu-mobile">
+					<a  ui-sref="store.products">Products</a>
+				</li>
+				<li class="item-menu-mobile">
+					<a href="#">About</a>
+				</li>
+
+				<li class="item-menu-mobile">
+					<a href="#">Contact</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</header>

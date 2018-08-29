@@ -11,13 +11,14 @@
 
         angular.extend(vm, {
             addToCart: addToCart,
-            buyNow: buyNow
+            buyNow: buyNow,
+            byCategory: false
         });
 
 
         function addToCart(item){
             CartService.addToCart(item, function(){
-                
+                swal(item.title, "is added to cart !", "success");
             })
         }
 

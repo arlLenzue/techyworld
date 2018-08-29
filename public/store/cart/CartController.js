@@ -19,7 +19,6 @@
         });
 
         function addToCart(item){
-            item.noToast = true;
             var itemCopy = angular.copy(item);
             itemCopy.qty = newValue;
             CartService.addToCart(itemCopy, function(cart){

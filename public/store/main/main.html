@@ -1,110 +1,186 @@
-	<div class="container">
-
-	    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-	        Carousel Here
-	      
-	    </div>
-
-	</div>
-
-	<div class="container">
-
-    <nav class="navbar navbar-main">
-        <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
-        <div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse d-inline-block" id="bs-example-navbar-collapse-8">
-                <ul class="nav navbar-nav d-inline-block">
-                	<li class="navbar-main__item">
-                        <a class="navbar-brand" ui-sref="store" ng-click="mainCtrl.getItems()"><i class="fa fa-home"></i></a>
-                    </li>
-                    <li class="navbar-main__item"
-                        ng-repeat="category in storeCtrl.categories track by $index">
-                        <a href="" ng-click="mainCtrl.changeCategory(category.name)">{{category.name}}</a>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div>
-    </nav>
-
-    <!-- Title -->
-    <div class="row">
-        <div class="form-group">
-                <h2>Latest Goods</h2>
-                <!-- Split button -->
-                <label>Sort by: </label>
-                <div class="btn-group dropup">
-                    <div class="dropdown items-filter">
-                        <div class="btn-group dropup">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span>{{mainCtrl.filter.name}}</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li ng-click="mainCtrl.filter.name = 'price'"><a href="#">Price</a></li>
-                            <li ng-click="mainCtrl.filter.name = 'title'"><a href="#">Name</a></li>
-                        </ul>
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="btn-group dropup">
-                    <div class="dropdown items-filter">
-                        <div class="btn-group dropup">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span ng-show="!mainCtrl.filter.value"><i class="glyphicon glyphicon-arrow-down"></i></span>
-                            <span ng-show="mainCtrl.filter.value"><i class="glyphicon glyphicon-arrow-up"></i></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li ng-click="mainCtrl.sort(false)"><a href="#">Down</a></li>
-                            <li ng-click="mainCtrl.sort(true)"><a href="#">Up</a></li>
-                        </ul>
-                        </div>
-                    </div>
-                </div>
+<!-- Slide1 -->
+<section class="slide1">
+    <div class="wrap-slick1">
+        <div class="slick1">
+            <div class="item-slick1 item1-slick1" style="background-image: url(images/master-slide-07.jpg);">
+            </div>
         </div>
     </div>
-    <!-- /.row -->
+</section>
 
-    <!-- Page Features -->
-    <div class="row text-center">
+<!-- Category -->
+<div class="banner bgwhite p-t-40 p-b-40">
+    <div class="container">
+        <div class="row">
+            <div ng-repeat="category in storeCtrl.categories  | limitTo : 3 track by $index " class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                <!-- block1 -->
+                <div class="block1 hov-img-zoom pos-relative m-b-30">
+                    <img src="images/banner-05.jpg" alt="IMG-BENNER">
 
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 hero-feature"
-             ng-repeat="item in mainCtrl.items | orderBy: mainCtrl.filter.name: mainCtrl.filter.value">
-            <div class="thumbnail item-thumbnail">
-                <a href="{{ '#/items/' + item._id }}">
-                    <span class="item-hover-mask item-hover-mask_more">
-                        <i class="glyphicon glyphicon-search">
-                            <span class="small">Show details</span>
-                        </i>
-                    </span>
-                    <img ng-src="{{item.images[item.mainImageIndex]}}" alt="{{item.title}}" class="image"/>
-                </a>
-                <div class="caption">
-                    <h4>{{ item.title }}</h4>
-                    <p class="item-thumbnail__description">{{ item.shortDescription }}</p>
-                    <p class="item-thumbnail__price">{{ item.price | currency: "$":0 }}</p>
-
-                    <div class="btn-group">
-                        <div class="btn-group">
-                            <button class="btn btn-primary btn-grey"
-                                    ng-click="storeCtrl.addToCart(item)">
-                                <i class="fa fa-cart-arrow-down"></i> Add to cart
-                            </button>
-                        </div>
-                        <div class="btn-group">
-                            <button class="btn btn-success btn-grey"
-                                    ng-click="storeCtrl.buyNow(item)">
-                                <i class="fa fa-dollar"></i> Buy now
-                            </button>
-                        </div>
+                    <div class="block1-wrapbtn w-size2">
+                        <!-- Button -->
+                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                            <span ng-bind="category.name"></span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-    <!-- /.row -->
+</div>
 
-    <hr>
+<!-- Our product -->
+<section class="bgwhite p-t-45 p-b-58">
+    <div class="container">
+        <div class="sec-title p-b-22">
+            <h3 class="m-text5 t-center">
+                Our Products
+            </h3>
+        </div>
 
+        <!-- Tab01 -->
+        <div class="tab01">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#best-seller" role="tab">Best Seller</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#sale" role="tab">Sale</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content p-t-35">
+                <!-- - -->
+                <div class="tab-pane fade show active" id="best-seller" role="tabpanel">
+                    <div class="row">
+                        <div ng-repeat="item in mainCtrl.items | limitTo : 4" class="col-sm-6 col-md-4 col-lg-3 p-b-50">
+                            <!-- Block2 -->
+                            <div class="block2">
+                                <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+                                    <img ng-src="{{item.images[item.mainImageIndex]}}" alt="IMG-PRODUCT">
+                                    <div class="block2-overlay trans-0-4">
+                                        <a href="{{ '#/items/' + item._id }}" class="sizefull dis-block">
+                                            <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                                <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                                <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                            </a>
+
+                                            <div class="block2-btn-addcart w-size1 trans-0-4">
+                                                <!-- Button -->
+                                                <button ng-click="storeCtrl.addToCart(item)" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                                    Add to Cart
+                                                </button>
+
+                                                <button ng-click="storeCtrl.buyNow(item)" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 m-t-5">
+                                                    Buy Now
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="block2-txt p-t-20">
+                                    <a href="{{ '#/items/' + item._id }}" class="block2-name dis-block s-text3 p-b-5">
+                                        <span ng-bind="item.title"></span>
+                                    </a>
+
+                                    <span class="block2-price m-text6 p-r-5">
+                                        <span ng-bind="item.price | currency: '$':0"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  -->
+                <div class="tab-pane fade" id="sale" role="tabpanel">
+                    <div class="row">
+                        <div ng-repeat="item in mainCtrl.items | limitTo : 4" class="col-sm-6 col-md-4 col-lg-3 p-b-50">
+                            <!-- Block2 -->
+                            <div class="block2">
+                                <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
+                                    <img ng-src="{{item.images[item.mainImageIndex]}}" alt="IMG-PRODUCT">
+
+                                    <div class="block2-overlay trans-0-4">
+                                        <a href="{{ '#/items/' + item._id }}" class="sizefull dis-block">
+                                            <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                                <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                                <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                            </a>
+
+                                            <div class="block2-btn-addcart w-size1 trans-0-4">
+                                                <!-- Button -->
+                                                <button ng-click="storeCtrl.addToCart(item)" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                                    Add to Cart
+                                                </button>
+
+                                                <button ng-click="storeCtrl.buyNow(item)" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 p-b-5">
+                                                    Buy Now
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="block2-txt p-t-20">
+                                    <a href="{{ '#/items/' + item._id }}" class="block2-name dis-block s-text3 p-b-5">
+                                        <span ng-bind="item.title"></span>
+                                    </a>
+
+                                    <span class="block2-price m-text6 p-r-5">
+                                        <span ng-bind="item.price | currency: '$':0"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Shipping -->
+<section class="shipping bgwhite p-t-62 p-b-46">
+    <div class="flex-w p-l-15 p-r-15">
+        <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+            <h4 class="m-text12 t-center">
+                Free Delivery Worldwide
+            </h4>
+
+            <a href="#" class="s-text11 t-center">
+                Click here for more info
+            </a>
+        </div>
+
+        <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 bo2 respon2">
+            <h4 class="m-text12 t-center">
+                30 Days Return
+            </h4>
+
+            <span class="s-text11 t-center">
+                Simply return it within 30 days for an exchange.
+            </span>
+        </div>
+
+        <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+            <h4 class="m-text12 t-center">
+                Store Opening
+            </h4>
+
+            <span class="s-text11 t-center">
+                Shop open from Monday to Sunday
+            </span>
+        </div>
+    </div>
+</section>
+
+<div class="btn-back-to-top bg0-hov" id="myBtn">
+    <span class="symbol-btn-back-to-top">
+        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+    </span>
 </div>
