@@ -5,7 +5,8 @@ var CategoriesSchema = new mongoose.Schema({
         type: String,
         unique: true,
         default: 'uncategorized'
-    }
+    },
+    image:String
 }, { usePushEach: true });
 
 mongoose.model('Categories', CategoriesSchema);
