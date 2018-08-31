@@ -5,6 +5,8 @@ var ItemsSchema = new mongoose.Schema({
     description: {type: String, default: ''},
     category: String,
     price: {type: Number, default: 0},
+    discount:{type: Number, default: 0},
+    originalPrice: {type: Number, default: 0},
     images: Array,
     mainImageIndex: {type: Number, default: 0},
     qty: {type: Number, default: 1}
