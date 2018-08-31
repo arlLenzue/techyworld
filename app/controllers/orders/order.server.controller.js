@@ -12,7 +12,6 @@ exports.checkout = function(req, res, next) {
     order.save(function(err, order){
         if(err){ return next(err) }
         res.json(order);
-        return order;
     }).then(function(order){
         console.log(order,'order details');
     });
