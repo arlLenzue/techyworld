@@ -5,7 +5,7 @@
         .module('app')
         .controller('SingleItemController', SingleItemController);
 
-    function SingleItemController($state, CartService, $stateParams, ItemsService) {
+    function SingleItemController($state, CartService, $stateParams, ItemsService, $window) {
 
         var vm = this;
 
@@ -29,6 +29,12 @@
             	vm.item = item;
             });
         }
+
+        function gotoTop(){
+            $window.scrollTo(0, 0);
+        }
+
+        gotoTop();
 
         resolveItem($stateParams)
 

@@ -5,7 +5,7 @@
         .module('app')
         .controller('MainController', MainController);
 
-    function MainController(ItemsService){
+    function MainController(ItemsService, $window){
 
         var vm = this;
 
@@ -34,6 +34,12 @@
                 vm.items = items;
             });
          }
+
+        function gotoTop(){
+            $window.scrollTo(0, 0);
+        }
+
+        gotoTop();
 
          getItems();
 

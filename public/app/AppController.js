@@ -11,6 +11,7 @@
 
         angular.extend(vm, {
             getUser: getUser,
+            goBack: goBack,
             goBack: goBack
         });
 
@@ -22,6 +23,11 @@
 
         function goBack(){
             $window.history.back();
+        }
+
+        function gotoTop(){
+            console.log('not working');
+            $window.scrollTo(0, 0);
         }
 
     }

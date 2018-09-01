@@ -5,7 +5,7 @@
         .module('app')
         .controller('ProductsController', ProductsController);
 
-    function ProductsController(ItemsService, $state, $stateParams){
+    function ProductsController(ItemsService, $state, $stateParams, $window){
 
         var vm = this;
 
@@ -34,6 +34,12 @@
                 vm.items = items;
             });
          }
+
+        function gotoTop(){
+            $window.scrollTo(0, 0);
+        }
+
+        gotoTop();
 
          if($stateParams.category && $stateParams.category != ""){
             changeCategory($stateParams.category);

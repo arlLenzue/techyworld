@@ -5,13 +5,14 @@
         .module('app')
         .controller('StoreController', StoreController);
 
-    function StoreController(CartService,CategoriesService, $state){
+    function StoreController(CartService,CategoriesService, $state, $window){
 
         var vm = this;
 
         angular.extend(vm, {
             addToCart: addToCart,
-            buyNow: buyNow
+            buyNow: buyNow,
+            gotoTop: gotoTop
         });
 
 
@@ -38,6 +39,10 @@
             CategoriesService.getAll(function(categories){
                 vm.categories = categories
             });
+        }
+
+        function gotoTop(){
+            $window.scrollTo(0, 0);
         }
 
         getCategory();

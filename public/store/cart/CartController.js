@@ -5,7 +5,7 @@
         .module('app')
         .controller('CartController', CartController);
 
-    function CartController(CartService){
+    function CartController(CartService, $window){
 
         var vm = this;
         var newValue = 1;
@@ -56,6 +56,12 @@
                 vm.cart = cart;
             })
         }
+
+        function gotoTop(){
+            $window.scrollTo(0, 0);
+        }
+
+        gotoTop();
 
         getCurrentCart();
 

@@ -5,7 +5,7 @@
         .module('app')
         .controller('CheckoutController', CheckoutController);
 
-    function CheckoutController(CartService, OrdersService, $state, $scope, UserService){
+    function CheckoutController(CartService, OrdersService, $state, $scope, UserService, $window){
 
         var vm = this;
 
@@ -51,6 +51,11 @@
             });
         }
 
+        function gotoTop(){
+            $window.scrollTo(0, 0);
+        }
+
+        gotoTop();
         getUser();
         getCurrentCart();
 
