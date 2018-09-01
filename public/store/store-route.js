@@ -47,7 +47,7 @@
                 }
             })
             .state('store.products', {
-                url: 'products/',
+                url: 'products/{category}',
                 views: {
                     'content@store': {
                         templateUrl: 'store/products/products.html',

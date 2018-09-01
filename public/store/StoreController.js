@@ -11,8 +11,7 @@
 
         angular.extend(vm, {
             addToCart: addToCart,
-            buyNow: buyNow,
-            byCategory: false
+            buyNow: buyNow
         });
 
 

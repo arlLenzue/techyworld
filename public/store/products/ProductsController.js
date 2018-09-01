@@ -5,7 +5,7 @@
         .module('app')
         .controller('ProductsController', ProductsController);
 
-    function ProductsController(ItemsService){
+    function ProductsController(ItemsService, $state, $stateParams){
 
         var vm = this;
 
@@ -35,7 +35,11 @@
             });
          }
 
-         getItems();
+         if($stateParams.category && $stateParams.category != ""){
+            changeCategory($stateParams.category);
+         }else{
+            getItems();
+         }
 
     }
 
