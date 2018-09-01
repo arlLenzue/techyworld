@@ -18,9 +18,8 @@
             $window.location.href = '/'+path;
         }
 
-        function transitionToDashboard(user){
-            if(user && user.role == "Admin") $state.go("admin");
-            else toastr.success("Under Construction");
+        function transitionToDashboard(){
+            $state.go("user");
         }
 
         function getCurrentCart(){

@@ -9,6 +9,9 @@ module.exports = function(app) {
 	.post(category.add)
 
 	app.route('/delete-categories/:id')
-	.get(category.delete)
+	.delete(category.delete)
+
+	app.route('/update-categories')
+	.put(category.update)
 	
 };

@@ -30,12 +30,12 @@ exports.add = function(req, res, next) {
                     _id: cartID
                 });
             }
-		
-	    var computedPrice = result.price;
-		
-	    if(result.discount){
-	        computedPrice = result.price + (result.price * result.discount);
-	    }
+
+            var computedPrice = result.price;
+        
+            if(result.discount > 0){
+                computedPrice = result.price - ((result.discount / 100) * result.price);
+            }
 
             var cartItem = new CartItem({
                 _id:            result.id,

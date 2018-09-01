@@ -1,61 +1,31 @@
+<a class="m-l-10" ui-sref="store">
+    <i class="fa fa-shopping-cart"></i> 
+</a>
 
-<div  class="container">
-	
-	<button class="btn btn-primary btn-lg" ng-click="appCtrl.goBack()">
-	    <i class="fa fa-shopping-cart"></i> Go Back to Store
-	</button>
+<div class="container m-t-10 m-b-10 m-l-10 m-r-10">
 
 	<div class="row">
-		  <div class="col-sm-6">
-		  	<label >Add New Item</label>
-			    <form>
-				    <div class="form-group">
-				      <label >Title:</label>
-				      <input type="text" ng-model="adminCtrl.items.title" placeholder="Product Name" class="form-control">
-				    </div>
-				    <div class="form-group">
-				      <label>Description:</label>
-				      <input type="text" ng-model="adminCtrl.items.description" placeholder="Product Description" class="form-control">
-				    </div>
-				    <div class="form-group">
-				    	<label>Category:</label>
-				     	<div class="dropdown">
-						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-					  		<span ng-bind="adminCtrl.items.category"></span>
-					  	</button>
-					 	<ul class="dropdown-menu">
-					 		<li class="btn-default" ng-repeat="category in adminCtrl.categories" ng-bind="category.name" ng-click="adminCtrl.items.category = category.name"></li>
-						</ul>
-					</div>
-				    </div>
-				    <div class="form-group">
-				      <label>Price:</label>
-				      <input type="number"ng-model="adminCtrl.items.price" min="1" placeholder="Product Price" class="form-control">
-				    </div>
-				    <div class="form-group">
-				      <label>Images:</label>
-				      <input type="text" ng-model="adminCtrl.itemImage" placeholder="Product Images (Seperate with comman ',')" class="form-control">
-				    </div>
-				    <div class="form-group">
-				      <label>Image Index:</label>
-				      <input type="number" ng-model="adminCtrl.items.mainImageIndex" min="0" placeholder="Image index to show" class="form-control">
-				    </div>
-				    <div class="form-group">
-				      <label>Quantity:</label>
-				      <input type="number" ng-model="adminCtrl.items.qty" min="1" placeholder="Product Quantity" class="form-control">
-				    </div>
-				    <button ng-click="adminCtrl.AddItem()"> Add Item</button>
-			   </form>				
-		  </div>
-		  <div class="col-sm-6">
-		  	<label >Add New Category</label>
-			    <form>
-				    <div class="form-group">
-				      <label>Name:</label>
-				      <input type="text" ng-model="adminCtrl.category.name" placeholder="Name" class="form-control">
-				    </div>
-				    <button ng-click="adminCtrl.AddCategory()"> Add CAtegory</button>
-			   </form>
-		  </div>
+
+		<div class="col-lg-3 sizefull">
+			<ul>
+				<li>
+					<button ui-sref="admin.items" class="hov1 w-full btn btn-defauly btn-lg bo1" >
+						 Items
+					</button>
+				</li>
+				<li>
+					<button ui-sref="admin.category" class="hov1 w-full btn btn-defauly btn-lg bo1" >
+						 Category
+					</button>
+				</li>
+			</ul>
+			
+		</div>
+
+		<div class="col-lg-9 container sizefull">
+			<div ui-view="content" class=" m-t-10 m-b-10 m-l-10 m-r-10"></div>
+		</div>
+
 	</div>
+
 </div>

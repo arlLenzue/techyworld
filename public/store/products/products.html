@@ -78,7 +78,7 @@
 					<div ng-repeat="item in productsCtrl.items | filter:productsCtrl.searchkeyworld" class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 						<!-- Block2 -->
 						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+							<div class="block2-img wrap-pic-w of-hidden pos-relative" ng-class="{'block2-labelsale' : item.discountedPrice}">
 								<img ng-src="{{item.images[item.mainImageIndex]}}" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
@@ -109,7 +109,8 @@
 								</a>
 
 								<span class="block2-price m-text6 p-r-5">
-									<span ng-bind="item.price | currency: '$':0"></span>
+									<span ng-if="item.discountedPrice" class="t-d-lt text-red p-r-5" ng-bind="item.price | currency"></span> 
+                                    <span ng-bind="item.discountedPrice || item.price | currency"></span>
 								</span>
 							</div>
 						</div>

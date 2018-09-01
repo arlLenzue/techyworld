@@ -45,12 +45,14 @@
 
         function updateItem(item, callback){
             $http.put('/update-items', item).then(function(response){
+                toastr.success("Item has been updated successfully");
                 callback(response.data);
             });
         }
 
         function deleteItem(id, callback){
             $http.delete('/delete-items/' + id).then(function(response){
+                toastr.success("Item has been deleted successfully");
                 callback(response.data);
             });
         }

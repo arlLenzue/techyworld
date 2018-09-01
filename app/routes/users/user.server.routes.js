@@ -6,6 +6,9 @@ module.exports = function(app) {
 	app.route('/get-user') 
 	.get(users.getUser)
 
+	app.route('/admin-role') 
+	.get(users.isAdmin)
+
 	app.route('/get-users')
 	.get(users.list)
 

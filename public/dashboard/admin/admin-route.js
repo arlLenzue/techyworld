@@ -9,10 +9,29 @@
        $stateProvider
         .state('admin', {
             url: '/admin',
-            templateUrl: 'dashboard/admin/admin.dashboard.html',
-            controller: 'AdminController',
-            controllerAs: 'adminCtrl'
-
+            views:{
+                '':{
+                    templateUrl: 'dashboard/admin/admin.dashboard.html',
+                    controller: 'AdminController',
+                    controllerAs: 'adminCtrl'
+                }
+            }
+        })
+        .state('admin.items', {
+            url: '/items/',
+            views: {
+                'content@admin': {
+                    templateUrl: 'dashboard/admin/admin.dashboard.items.html'
+                }
+            }
+        })
+        .state('admin.category', {
+            url: '/category/',
+            views: {
+                'content@admin': {
+                    templateUrl: 'dashboard/admin/admin.dashboard.category.html'
+                }
+            }
         })
     }
 })();

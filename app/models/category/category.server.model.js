@@ -6,7 +6,14 @@ var CategoriesSchema = new mongoose.Schema({
         unique: true,
         default: 'uncategorized'
     },
-    image:String
+    image:{
+    	type: String,
+    	default: 'https://www.cornellstore.com/c.4488804/b2c/img/no_image_available.jpeg' 
+    },
+    created: { 
+		type: Date, 
+		default: Date.now 
+	}
 }, { usePushEach: true });
 
 mongoose.model('Categories', CategoriesSchema);

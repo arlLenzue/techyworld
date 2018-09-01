@@ -10,7 +10,8 @@
         var service = {
             getAll: getAll,
             addNew: addNew,
-            deleteCategory: deleteCategory
+            deleteCategory: deleteCategory,
+            updateCategory: updateCategory
         };
 
         return service;
@@ -30,7 +31,15 @@
 
         function deleteCategory(id, callback){
             $http.delete('/delete-categories/' + id).then(function(response){
+                toastr.success("Category has been deleted successfully");
                callback(response.data);
+            });
+        }
+
+        function updateCategory(category, callback){
+            $http.put('/update-categories', category).then(function(response){
+                toastr.success("Category has been updated successfully");
+                callback(response.data);
             });
         }
 

@@ -1,0 +1,75 @@
+<div class="row">
+
+	<div class="col-lg-4 sizefull"> 
+
+		<div class="s-text18">Category List</div>
+	
+		<ul>
+			<li ng-repeat="item in adminCtrl.items">
+				<button class="hov1 w-full btn btn-defauly btn-lg bo1"  href="" ng-click="adminCtrl.item = item" ng-bind="item.title"></button>
+			</li>
+		</ul>
+	
+
+	 </div>
+
+
+	<div class="col-lg-6 sizefull"> 
+
+		<div class="s-text18">Add New Item</div>
+
+	    <form class="m-t-5 m-b-5">
+		    <div class="form-group">
+		      <label >Title:</label>
+		      <input type="text" ng-model="adminCtrl.item.title" placeholder="Product Name" class="form-control">
+		    </div>
+		    <div class="form-group">
+		      <label>Description:</label>
+		      <input type="text" ng-model="adminCtrl.item.description" placeholder="Product Description" class="form-control">
+		    </div>
+		    <div class="form-group">
+		    	<label>Category:</label>
+		     	<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+			  		<span ng-bind="adminCtrl.item.category"></span>
+			  	</button>
+			 	<ul class="dropdown-menu">
+			 		<li class="btn-default" ng-repeat="category in adminCtrl.categories" ng-click="adminCtrl.item.category = category.name">
+			 			<a ng-bind="category.name" href=""></a>
+			 		</li>
+				</ul>
+			</div>
+		    </div>
+		    <div class="form-group">
+		      <label>Price:</label>
+		      <input type="number"ng-model="adminCtrl.item.price" min="1" placeholder="Product Price" class="form-control">
+		    </div>
+		    <div class="form-group">
+		      <label>Discount %:</label>
+		      <input type="number"ng-model="adminCtrl.item.discount" min="0" ng-change="adminCtrl.enableDiscount()" placeholder="Product Discount in %" class="form-control">
+		    </div>
+		    <div class="form-group">
+		      <label>Discounted Price:</label>
+		      <input type="number" ng-value="adminCtrl.item.discountedPrice" disabled placeholder="Price after discount" class="form-control">
+		    </div>
+		    <div class="form-group">
+		      <label>Images:</label>
+		      <input type="text" ng-model="adminCtrl.itemImage" placeholder="Product Images (Seperate with comman ',')" class="form-control">
+		    </div>
+		    <div class="form-group">
+		      <label>Image Index:</label>
+		      <input type="number" ng-model="adminCtrl.item.mainImageIndex" min="0" placeholder="Image index to show" class="form-control">
+		    </div>
+		    <div class="form-group">
+		      <label>Quantity:</label>
+		      <input type="number" ng-model="adminCtrl.item.qty" min="1" placeholder="Product Quantity" class="form-control">
+		    </div>
+		    <button ng-if="!adminCtrl.item._id" class="btn btn-success btn-lg" ng-click="adminCtrl.AddItem()"> Add Item</button>
+		    <button ng-if="adminCtrl.item._id" class="btn btn-success btn-lg" ng-click="adminCtrl.SaveItem()"> Save </button>
+		    <button ng-if="adminCtrl.item._id" class="btn btn-warning btn-lg" ng-click="adminCtrl.ClearItem()"> Clear </button>
+		    <button ng-if="adminCtrl.item._id" class="btn btn-danger btn-lg" ng-click="adminCtrl.DeleteItem(adminCtrl.item._id)"> Delete </button>
+	   </form>
+
+	 </div>
+
+</div>

@@ -29,6 +29,10 @@ exports.getByCategory = function(req, res, next) {
 }
 
 exports.add = function(req, res, next) { 
+        
+    if(req.body.discount > 0){
+        req.body.discountedPrice = req.body.price - ((req.body.discount / 100) * req.body.price);
+    }
 
 	var item = new Item(req.body); 
 	
@@ -40,8 +44,23 @@ exports.add = function(req, res, next) {
 	});
 }
 
-exports.update = function(req, res, next) { 
-	
+exports.update = function(req, res, next) {
+        
+    if(req.body.discount > 0){
+        req.body.discountedPrice = req.body.price - ((req.body.discount / 100) * req.body.price);
+    }else{
+    	req.body.discountedPrice = null;
+    }
+
+	Item.findByIdAndUpdate(req.body._id, req.body, 
+	function(err, item) { 
+		if (err) { 
+			return next(err); 
+		} else { 
+			res.json(item);
+		} 
+	}); 
+
 }
 
 exports.getOne = function(req, res, next) { 
@@ -61,5 +80,11 @@ exports.getOne = function(req, res, next) {
 
 }
 exports.delete = function(req, res, next) { 
-   
+	Item.remove({ _id: req.params.id }, function(err) {
+	    if (err) { 
+			return next(err); 
+		} else { 
+			res.json('Success'); 
+		} 
+	});
 }

@@ -1,3 +1,7 @@
+.t-d-lt{
+	text-decoration: line-through;
+}
+
 /*[ FONT SIZE ]
 ///////////////////////////////////////////////////////////
 */
@@ -2229,6 +2233,7 @@
 /* ------------------------------------ */
 .text-white {color: white;}
 .text-black {color: black;}
+.text-red {color: red;}
 
 .text-hov-white:hover {color: white;}
 

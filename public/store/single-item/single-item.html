@@ -21,7 +21,8 @@
             </h4>
 
             <span class="m-text17">
-                <span ng-bind="singleItemCtrl.item.price | currency"></span> 
+                <span ng-if="singleItemCtrl.item.discountedPrice" class="t-d-lt text-red p-r-5" ng-bind="singleItemCtrl.item.price | currency"></span> 
+                <span ng-bind="singleItemCtrl.item.discountedPrice || singleItemCtrl.item.price | currency"></span> 
             </span>
 
             <p class="s-text8 p-t-10">

@@ -27,5 +27,25 @@ exports.add = function(req, res, next) {
 }
 exports.delete = function(req, res, next) { 
 
+	Category.remove({ _id: req.params.id }, function(err) {
+	    if (err) { 
+			return next(err); 
+		} else { 
+			res.json('Success'); 
+		} 
+	});
+}
+exports.update = function(req, res, next) { 
+
+
+	Category.findByIdAndUpdate(req.body._id, req.body, 
+	function(err, item) { 
+		if (err) { 
+			return next(err); 
+		} else { 
+			res.json(item);
+		} 
+	}); 
+
 
 }
