@@ -5,3 +5,7 @@
 .input-group-addon{
 	width: 10% !important;
 }
+
+.warning-text{
+	color: red;
+}

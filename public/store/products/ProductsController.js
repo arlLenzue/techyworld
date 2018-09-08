@@ -16,7 +16,8 @@
             },
             sort: sort,
             changeCategory: changeCategory,
-            getItems: getItems
+            getItems: getItems,
+            currentCategoty: null
         });
 
          function sort(value){
@@ -24,12 +25,14 @@
         }
 
          function getItems(){
+            vm.currentCategoty = null;
          	ItemsService.getAll(function(items){
          		vm.items = items;
          	})
          }
 
          function changeCategory(category){
+            vm.currentCategoty = category;
             ItemsService.getAllCategory(category, function(items){
                 vm.items = items;
             });

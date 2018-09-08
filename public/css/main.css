@@ -1600,9 +1600,29 @@ li.sale-noti > a {
 /*[ Block2 ]
 ///////////////////////////////////////////////////////////
 */
-.block2-labelsale::before,
-.block2-labelnew::before 
-{
+
+.labelsale{
+  z-index: 100;
+  font-family: Montserrat-Regular;
+  font-size: 12px;
+  color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 22px;
+  border-radius: 11px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: #e65540;
+}
+
+.labelnew{
   z-index: 100;
   font-family: Montserrat-Regular;
   font-size: 12px;
@@ -1620,16 +1640,7 @@ li.sale-noti > a {
   position: absolute;
   top: 12px;
   left: 12px;
-}
-
-.block2-labelsale::before {
-  background-color: #e65540;
-  content: 'Sale';
-}
-
-.block2-labelnew::before {
   background-color: #66a8a6;
-  content: 'New';
 }
 
 /* ------------------------------------ */

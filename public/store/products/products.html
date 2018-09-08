@@ -27,13 +27,13 @@
 
 					<ul class="p-b-54">
 						<li class="p-t-4">
-							<a href="" ng-click="productsCtrl.getItems()" class="s-text13 active1">
+							<a href="" ng-class="{'active1' : !productsCtrl.currentCategoty }" ng-click="productsCtrl.getItems()" class="s-text13">
 								All
 							</a>
 						</li>
 
 						<li ng-repeat="category in storeCtrl.categories track by $index" class="p-t-4">
-							<a href="" class="s-text13" ng-click="productsCtrl.changeCategory(category.name)">
+							<a href="" class="s-text13" ng-class="{'active1' : category.name == productsCtrl.currentCategoty}" ng-click="productsCtrl.changeCategory(category.name)">
 								<span ng-bind="category.name"></span>
 							</a>
 						</li>
@@ -78,7 +78,8 @@
 					<div ng-repeat="item in productsCtrl.items | filter: {title : productsCtrl.searchkeyworld}" class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 						<!-- Block2 -->
 						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative" ng-class="{'block2-labelsale' : item.discountedPrice}">
+							<div class="block2-img wrap-pic-w of-hidden pos-relative">
+                                <span ng-if="item.discountedPrice" class="labelsale" ng-bind="item.discount + '% Off'"></span>
 								<img ng-src="{{item.images[item.mainImageIndex]}}" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">

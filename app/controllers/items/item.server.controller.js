@@ -2,6 +2,7 @@
 var mongoose = require('mongoose');
 var fs = require('fs');
 var Item = mongoose.model('Items');
+var users = require('../../../app/controllers/users/user.server.controller');
 
 exports.get = function(req, res, next) { 
     Item.find({}, function(err, items) { 
@@ -28,7 +29,28 @@ exports.getByCategory = function(req, res, next) {
 
 }
 
+exports.getOne = function(req, res, next) { 
+	
+	var itemID = req.params.id;
+
+	console.log(itemID,'itemIDitemIDitemID',req.body);
+
+	Item.findOne({_id: itemID}, function(err, item) { 
+		if (err) { 
+			return next(err); 
+		} else { 
+			console.log(item,'item found');
+			res.json(item); 
+		} 
+	}); 
+
+}
+
 exports.add = function(req, res, next) { 
+
+	var isAdmin = users.checkIfAdmin(req.user);
+
+	if(!isAdmin) return next("{error: not authorized}");
         
     if(req.body.discount > 0){
         req.body.discountedPrice = req.body.price - ((req.body.discount / 100) * req.body.price);
@@ -45,6 +67,10 @@ exports.add = function(req, res, next) {
 }
 
 exports.update = function(req, res, next) {
+
+	var isAdmin = users.checkIfAdmin(req.user);
+
+	if(!isAdmin) return next("{error: not authorized}");
         
     if(req.body.discount > 0){
         req.body.discountedPrice = req.body.price - ((req.body.discount / 100) * req.body.price);
@@ -63,23 +89,12 @@ exports.update = function(req, res, next) {
 
 }
 
-exports.getOne = function(req, res, next) { 
-	
-	var itemID = req.params.id;
+exports.delete = function(req, res, next) {
 
-	console.log(itemID,'itemIDitemIDitemID',req.body);
+	var isAdmin = users.checkIfAdmin(req.user);
 
-	Item.findOne({_id: itemID}, function(err, item) { 
-		if (err) { 
-			return next(err); 
-		} else { 
-			console.log(item,'item found');
-			res.json(item); 
-		} 
-	}); 
+	if(!isAdmin) return next("{error: not authorized}");
 
-}
-exports.delete = function(req, res, next) { 
 	Item.remove({ _id: req.params.id }, function(err) {
 	    if (err) { 
 			return next(err); 

@@ -26,12 +26,16 @@ var getErrorMessage = function(err) {
 }; 
 
 exports.isAdmin = function(req, res, next) { 
-	if(req.user && (req.user.role == "Admin" || req.user.username == "admin")){
-		res.json(true);
-	}else{
-		res.json(false);
-	}
+	res.json(exports.checkIfAdmin(req.user));
 };
+
+exports.checkIfAdmin = function(user){
+	if(user && (user.role == "Admin" || user.username == "admin")){
+		return true
+	}else{
+		return false	
+	}
+}
 
 exports.list = function(req, res, next) { 
 	User.find({}, function(err, users) { 
@@ -72,6 +76,7 @@ exports.getUser = function(req, res){
 		user.id = req.user.id;
 		user.firstName = req.user.firstName;
 		user.lastName = req.user.lastName;
+		user.fullName = req.user.fullName;
 		user.email = req.user.email;
 		user.username = req.user.username;
 		user.contact = req.user.contact;
